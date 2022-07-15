@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
-const Home: NextPage = () => {
+const BinToDec: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
@@ -16,15 +16,7 @@ const Home: NextPage = () => {
         <Header/>
 
         <div className='flex flex-col gap-2 py-5'>
-          <Link href='/bintodec'>
-            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>BinToDec</p>
-          </Link>
-          <Link href='/countdowntimer'>
-            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Countdown Timer</p>
-          </Link>
-          <Link href='/bintodec'>
-            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>wip</p>
-          </Link>
+          <h2 className="text-3xl font-bold text-blue-900">BinToDec</h2>
         </div>
 
       </main>
@@ -34,4 +26,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default BinToDec
