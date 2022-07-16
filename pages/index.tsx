@@ -19,8 +19,8 @@ const Home: NextPage = () => {
           <Link href='/bintodec'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>BinToDec</p>
           </Link>
-          <Link href='/countdowntimer'>
-            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Countdown Timer</p>
+          <Link href='/stopwatch'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Stopwatch</p>
           </Link>
           <Link href='/bintodec'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>wip</p>
