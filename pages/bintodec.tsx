@@ -11,7 +11,7 @@ const BinToDec: NextPage = () => {
   const verifyInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key.match(/^[0-1]+$/g) === null && e.key !== "Backspace" && e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.ctrlKey === false){
       e.preventDefault()
-      alert(e.key)
+      alert("Só é possível digitar 0 ou 1")
     }
   }
 
@@ -27,7 +27,7 @@ const BinToDec: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
-        <title>Create Next App</title>
+        <title>App Gallery - BinToDec</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -40,7 +40,7 @@ const BinToDec: NextPage = () => {
             type="text"
             onKeyDown={verifyInput}
             onChange={handleConvert}
-            className="p-1 mt-5 text-center"
+            className="p-1 mt-5 text-center bg-slate-100 rounded-md"
           />
           <p id="result" className='text-2xl'>{result}</p>
         </div>
