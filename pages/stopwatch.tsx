@@ -38,11 +38,10 @@ const Stopwatch: NextPage = () => {
 
   const handleReset = () => {
     setStart(Date.now())
-    let distance = Date.now() - start
-    setHours(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
-    setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)))
-    setSeconds(Math.floor((distance % (1000 * 60)) / 1000))
-    setMilisseconds(Math.floor(distance % 1000))
+    setHours(0)
+    setMinutes(0)
+    setSeconds(0)
+    setMilisseconds(0)
     setMarks([])
   }
 
