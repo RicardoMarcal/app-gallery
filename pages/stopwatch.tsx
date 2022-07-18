@@ -28,7 +28,7 @@ const Stopwatch: NextPage = () => {
       setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)))
       setSeconds(Math.floor((distance % (1000 * 60)) / 1000))
       setMilisseconds(Math.floor(distance % 1000))
-    }, 50)
+    }, 25)
   
     return () => {
       clearInterval(timer)
@@ -68,10 +68,10 @@ const Stopwatch: NextPage = () => {
         <div className='flex flex-col py-5 items-center'>
           <h2 className="text-3xl font-bold text-blue-900">Stopwatch</h2>
           <p id="a" className='text-2xl mt-5'>
-            {('00' + hours).slice(-2)}h
-            {' '+('00' + minutes).slice(-2)}m
-            {' '+('00' + seconds).slice(-2)}s
-            {' '+('000' + milisseconds).slice(-3)}ms
+            {`${('00' + hours).slice(-2)}h`}
+            {` ${('00' + minutes).slice(-2)}m`}
+            {` ${('00' + seconds).slice(-2)}s`}
+            {` ${('000' + milisseconds).slice(-3)}ms`}
           </p>
           <section className='flex gap-3'>
             <input
@@ -92,10 +92,10 @@ const Stopwatch: NextPage = () => {
               <div key={time.getTime()} className='flex gap-1'>
                 {key+1 + ') '+ time.toLocaleDateString() + ' | ' + time.toLocaleTimeString() + ' - '}
                 <div className='font-bold'>
-                  {hours > 0 ? ('00' + hours).slice(-2) + 'h' : ''}
-                  {minutes > 0 ? ' '+('00' + minutes).slice(-2) + 'm' : ''}
-                  {seconds > 0 ? ' '+('00' + seconds).slice(-2) + 's' : ''}
-                  {milisseconds > 0 ? ' '+('000' + milisseconds).slice(-3) + 'ms' : ''}
+                  {hours > 0 ? ` ${('00' + hours).slice(-2)}h` : ''}
+                  {minutes > 0 ? ` ${('00' + minutes).slice(-2)}m` : ''}
+                  {seconds > 0 ? ` ${('00' + seconds).slice(-2)}s` : ''}
+                  {milisseconds > 0 ? ` ${('000' + milisseconds).slice(-3)}ms` : ''}
                 </div>
               </div>
             ))}

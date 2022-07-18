@@ -19,7 +19,7 @@ const BinToDec: NextPage = () => {
     let r = 0
     let bin = e.target.value
     for(let i = 0; i < bin.length; i++){
-      r = r + parseInt(bin[i])*Math.pow(2, bin.length-i-1)
+      r += parseInt(bin[i])*Math.pow(2, bin.length-i-1)
     }
     setResult(r)
   }
