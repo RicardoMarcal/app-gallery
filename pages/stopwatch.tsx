@@ -93,8 +93,8 @@ const Stopwatch: NextPage = () => {
                 {key+1 + ') '+ time.toLocaleDateString() + ' | ' + time.toLocaleTimeString() + ' - '}
                 <div className='font-bold'>
                   {hours > 0 ? ` ${('00' + hours).slice(-2)}h` : ''}
-                  {minutes > 0 ? ` ${('00' + minutes).slice(-2)}m` : ''}
-                  {seconds > 0 ? ` ${('00' + seconds).slice(-2)}s` : ''}
+                  {minutes  > 0 || hours > 0 ? ` ${('00' + minutes).slice(-2)}m` : ''}
+                  {seconds > 0 || minutes > 0 ? ` ${('00' + seconds).slice(-2)}s` : ''}
                   {milisseconds > 0 ? ` ${('000' + milisseconds).slice(-3)}ms` : ''}
                 </div>
               </div>
