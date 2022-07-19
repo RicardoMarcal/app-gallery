@@ -11,7 +11,7 @@ const BinToDec: NextPage = () => {
   const verifyInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key.match(/^[0-1]+$/g) === null && e.key !== "Backspace" && e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.ctrlKey === false){
       e.preventDefault()
-      alert("Só é possível digitar 0 ou 1")
+      alert("You can only type 0 or 1")
     }
   }
 

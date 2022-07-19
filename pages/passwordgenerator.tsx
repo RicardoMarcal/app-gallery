@@ -9,11 +9,11 @@ const characters = {
   uppercase: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
   lowercase: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
   numbers: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-  symbols: ['!', '@', '#', '$', '%', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '~', '^', '/'],
+  symbols: ['!', '@', '#', '$', '%', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '~', '^', '/', '?', ''],
 }
 
 const PasswordGenerator: NextPage = () => {
-  const [password, setPassword] = useState('38qhwn9rfj8')
+  const [password, setPassword] = useState('')
   const [uppercaseFlag, setUppercaseFlag] = useState(true)
   const [lowercaseFlag, setLowercaseFlag] = useState(true)
   const [numbersFlag, setNumbersFlag] = useState(true)
@@ -22,7 +22,6 @@ const PasswordGenerator: NextPage = () => {
 
   useEffect(() => {
     handleGenerate()
-  
   }, [])
   
 
@@ -46,6 +45,11 @@ const PasswordGenerator: NextPage = () => {
     setPassword(pw)
   }
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(password);
+    alert('Copied to clipboard!')
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
@@ -59,8 +63,8 @@ const PasswordGenerator: NextPage = () => {
         <div className='flex flex-col items-center gap-2 py-5'>
           <h2 className="text-3xl font-bold text-blue-900">Password Generator</h2>
           <div className="flex justify-between p-1 mt-5 w-72 text-center bg-slate-100 rounded-md">
-            <p className='px-2'>{password}</p>
-            <button className='border-l-2'>📝</button>
+            <p id="password" className='px-2'>{password}</p>
+            <button onClick={copyToClipboard} className='border-l-2'>📝</button>
           </div>
           <section className='flex flex-col gap-2 mt-2 items-start w-52'>
             <div>

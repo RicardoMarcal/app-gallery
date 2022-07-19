@@ -25,6 +25,9 @@ const Home: NextPage = () => {
           <Link href='/passwordgenerator'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Password Generator</p>
           </Link>
+          <Link href='/todolist'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>To Do List</p>
+          </Link>
         </div>
 
       </main>
