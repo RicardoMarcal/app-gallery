@@ -28,6 +28,9 @@ const Home: NextPage = () => {
           <Link href='/todolist'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>To Do List</p>
           </Link>
+          <Link href='/pomodoroclock'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Pomodoro Clock</p>
+          </Link>
         </div>
 
       </main>
