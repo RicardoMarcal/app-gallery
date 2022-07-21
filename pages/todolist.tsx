@@ -49,7 +49,7 @@ const BinToDec: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
-        <title>App Gallery - To Do List</title>
+        <title>To Do List - App Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

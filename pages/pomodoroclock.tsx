@@ -7,45 +7,54 @@ import Header from '../components/Header'
 const Stopwatch: NextPage = () => {
   const [paused, setPaused] = useState(true)
   const [working, setWorking] = useState(true)
+  const [finalTime, setFinalTime] = useState(Date.now() + 1500000)
   const [timeLeft, setTimeLeft] = useState(1500)
 
   useEffect(() => {
     const sound = new Audio("https://cdn.pixabay.com/download/audio/2021/09/27/audio_91211934db.mp3?filename=clock-alarm-8761.mp3")
     const timer = setInterval(() => {
       if(!paused){
-        if(timeLeft === 0){
+        if(timeLeft <= 0){
           sound.play()
           handleReset()
           return
         }
-        setTimeLeft(timeLeft-1)
+        setTimeLeft(Math.ceil((finalTime-Date.now())/1000))
       }
-    }, 1000)
+    }, 500)
   
     return () => {
       clearInterval(timer)
     }
-  }, [paused, timeLeft])
+  }, [paused, timeLeft, finalTime])
   
 
   const handleReset = () => {
     if(!working){
-      setTimeLeft(1500)
+    setTimeLeft(1500)
+    setFinalTime(Date.now() + 1500000)
     }else{
-      setTimeLeft(300)
+    setTimeLeft(300)
+    setFinalTime(Date.now() + 300000)
     }
     setPaused(true)
     setWorking(!working)
   }
 
   const handlePause = () => {
+    setFinalTime(Date.now()+timeLeft*1000)
     setPaused(!paused)
   }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
-        <title>App Gallery - Pomodoro Clock</title>
+        <title>
+          {working ? '🍅 ' : '💤 '}
+          {`(${Math.floor((timeLeft-timeLeft%60)/60)}:`}
+          {`${('00'+Math.floor(timeLeft%60)).slice(-2)}) `}
+          Pomodoro Clock - App Gallery
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

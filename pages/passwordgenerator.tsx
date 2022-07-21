@@ -53,7 +53,7 @@ const PasswordGenerator: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
-        <title>App Gallery - Password Generator</title>
+        <title>Password Generator - App Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

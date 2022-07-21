@@ -14,7 +14,9 @@ interface mark {
 }
 
 const Stopwatch: NextPage = () => {
+  const [paused, setPaused] = useState(true)
   const [start, setStart] = useState(Date.now())
+  const [distance, setDistance] = useState(0)
   const [marks, setMarks] = useState([] as mark[])
   const [hours, setHours] = useState(0)
   const [minutes, setMinutes] = useState(0)
@@ -23,21 +25,29 @@ const Stopwatch: NextPage = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      let distance = Date.now() - start
-      setHours(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
-      setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)))
-      setSeconds(Math.floor((distance % (1000 * 60)) / 1000))
-      setMilisseconds(Math.floor(distance % 1000))
+      if(!paused){
+        let distance = Date.now() - start
+        setHours(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
+        setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)))
+        setSeconds(Math.floor((distance % (1000 * 60)) / 1000))
+        setMilisseconds(Math.floor(distance % 1000))
+        setDistance(distance)
+      }
     }, 25)
   
     return () => {
       clearInterval(timer)
     }
-  }, [start])
+  }, [distance, start])
   
+  const handlePause = () => {
+    setStart(Date.now()-distance)
+    setPaused(!paused)
+  }
 
   const handleReset = () => {
-    setStart(Date.now())
+    setPaused(true)
+    setDistance(0)
     setHours(0)
     setMinutes(0)
     setSeconds(0)
@@ -45,20 +55,22 @@ const Stopwatch: NextPage = () => {
     setMarks([])
   }
 
-  const handleSave = () => {
-    setMarks([...marks, {
-      time: new Date(Date.now()),
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
-      milisseconds: milisseconds
-    }])
+  const handleMark = () => {
+    if(!paused){
+      setMarks([...marks, {
+        time: new Date(Date.now()),
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
+        milisseconds: milisseconds
+      }])
+    }
   }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2 bg-slate-300">
       <Head>
-        <title>App Gallery - Stopwatch</title>
+        <title>Stopwatch - App Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -76,15 +88,21 @@ const Stopwatch: NextPage = () => {
           <section className='flex gap-3'>
             <input
               type="button"
-              value="Reset"
-              onClick={handleReset}
-              className="p-1 mt-5 w-32 text-center bg-slate-100 rounded-md cursor-pointer"
+              value={paused ? 'Start' : 'Stop'}
+              onClick={handlePause}
+              className="p-1 mt-5 w-24 text-center bg-slate-100 rounded-md cursor-pointer"
             />
             <input
               type="button"
-              value="Save"
-              onClick={handleSave}
-              className="p-1 mt-5 w-32 text-center bg-slate-100 rounded-md cursor-pointer"
+              value="Reset"
+              onClick={handleReset}
+              className="p-1 mt-5 w-24 text-center bg-slate-100 rounded-md cursor-pointer"
+            />
+            <input
+              type="button"
+              value="Mark"
+              onClick={handleMark}
+              className="p-1 mt-5 w-24 text-center bg-slate-100 rounded-md cursor-pointer"
             />
           </section>
           <section className='flex flex-col-reverse justify-start mt-4'>
