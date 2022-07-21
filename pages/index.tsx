@@ -31,6 +31,9 @@ const Home: NextPage = () => {
           <Link href='/pomodoroclock'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Pomodoro Clock</p>
           </Link>
+          <Link href='/daysbetweendates'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Days Between Dates</p>
+          </Link>
         </div>
 
       </main>
