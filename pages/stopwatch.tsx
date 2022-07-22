@@ -17,7 +17,7 @@ const Stopwatch: NextPage = () => {
   const [paused, setPaused] = useState(true)
   const [start, setStart] = useState(Date.now())
   const [distance, setDistance] = useState(0)
-  const [marks, setMarks] = useState([] as mark[])
+  const [marks, setMarks] = useState<mark[]>([])
   const [hours, setHours] = useState(0)
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
@@ -34,11 +34,11 @@ const Stopwatch: NextPage = () => {
         setDistance(distance)
       }
     }, 25)
-  
+
     return () => {
       clearInterval(timer)
     }
-  }, [distance, start])
+  }, [paused, distance, start])
   
   const handlePause = () => {
     setStart(Date.now()-distance)
@@ -56,15 +56,14 @@ const Stopwatch: NextPage = () => {
   }
 
   const handleMark = () => {
-    if(!paused){
-      setMarks([...marks, {
-        time: new Date(Date.now()),
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds,
-        milisseconds: milisseconds
-      }])
-    }
+    if(distance <= 0) return
+    setMarks([...marks, {
+      time: new Date(Date.now()),
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      milisseconds: milisseconds
+    }])
   }
 
   return (
@@ -102,7 +101,7 @@ const Stopwatch: NextPage = () => {
               type="button"
               value="Mark"
               onClick={handleMark}
-              className="p-1 mt-5 w-24 text-center bg-slate-100 rounded-md cursor-pointer"
+              className={`p-1 mt-5 w-24 text-center bg-slate-100 rounded-md cursor-pointer ${distance <= 0 ? 'cursor-not-allowed opacity-50' : ''}`}
             />
           </section>
           <section className='flex flex-col-reverse justify-start mt-4'>

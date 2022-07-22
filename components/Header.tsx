@@ -6,7 +6,7 @@ function Header() {
         <Link href='/'>
             <h1 className="text-6xl font-bold text-blue-900 cursor-pointer">App Gallery</h1>
         </Link>
-        <p className="mt-3 text-2xl">By Ricardo Marçal</p>
+        <p className="mt-3 text-2xl">by Ricardo Marçal</p>
     </div>
   )
 }
