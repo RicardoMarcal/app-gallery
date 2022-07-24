@@ -34,6 +34,9 @@ const Home: NextPage = () => {
           <Link href='/daysbetweendates'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Days Between Dates</p>
           </Link>
+          <Link href='/randomnumbergenerator'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Random Number Generator</p>
+          </Link>
         </div>
 
       </main>
