@@ -9,7 +9,7 @@ const characters = {
   uppercase: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
   lowercase: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
   numbers: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-  symbols: ['!', '@', '#', '$', '%', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '~', '^', '/', '?', ''],
+  symbols: ['!', '@', '#', '$', '%', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '~', '^', '/', '?'],
 }
 
 const PasswordGenerator: NextPage = () => {
@@ -29,19 +29,19 @@ const PasswordGenerator: NextPage = () => {
     let pw: string = ''
     let aux = length
     for(let i = 0; i < aux; i++){
-      if((i%4+1) % 4 === 0 && uppercaseFlag){
+      if(i%4 === 0 && uppercaseFlag){
         pw += characters.uppercase[Math.floor(Math.random()*characters.uppercase.length)]
-      }else if((i%4+1) % 3 === 0 && lowercaseFlag){
+      }else if(i%4 === 1 && lowercaseFlag){
         pw += characters.lowercase[Math.floor(Math.random()*characters.lowercase.length)]
-      }else if((i%4+1) % 2 === 0 && numbersFlag){
+      }else if(i%4 === 2 && numbersFlag){
         pw += characters.numbers[Math.floor(Math.random()*characters.numbers.length)]
-      }else if((i%4+1) === 1 && symbolsFlag){
+      }else if(i%4 === 3 && symbolsFlag){
         pw += characters.symbols[Math.floor(Math.random()*characters.symbols.length)]
       }else{
         aux++
       }
     }
-    //pw = [...pw].sort(() => 0.5 - Math.random()).join('')
+    pw = [...pw].sort(() => 0.5 - Math.random()).join('')
     setPassword(pw)
   }
 
