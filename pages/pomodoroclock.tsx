@@ -7,6 +7,7 @@ import Header from '../components/Header'
 const Stopwatch: NextPage = () => {
   const [paused, setPaused] = useState(true)
   const [working, setWorking] = useState(true)
+  const [focus, setFocus] = useState('')
   const [finalTime, setFinalTime] = useState(Date.now() + 1500000)
   const [timeLeft, setTimeLeft] = useState(1500)
 
@@ -52,7 +53,8 @@ const Stopwatch: NextPage = () => {
         <title>
           {working ? '🍅 ' : '💤 '}
           {`(${Math.floor((timeLeft-timeLeft%60)/60)}:`}
-          {`${('00'+Math.floor(timeLeft%60)).slice(-2)}) `}
+          {`${('00'+Math.floor(timeLeft%60)).slice(-2)}`}
+          {`${focus && working ? ' - '+focus+') ' : focus && !working ? ' - Break) ' : ') '}`}
           Pomodoro Clock - App Gallery
         </title>
         <link rel="icon" href="/favicon.ico" />
@@ -81,9 +83,14 @@ const Stopwatch: NextPage = () => {
               onClick={handleReset}
               className="p-1 mt-5 w-32 text-center bg-slate-100 rounded-md cursor-pointer"
             />
-            
           </section>
         </div>
+        <input
+          type="text"
+          placeholder="What are you focusing on?"
+          onChange={e => setFocus(e.target.value)}
+          className="p-1 mt-3 w-64 text-center bg-transparent rounded-md border-b-2"
+        />
 
       </main>
 

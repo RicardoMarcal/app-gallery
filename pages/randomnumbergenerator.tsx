@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
@@ -8,6 +8,10 @@ const BinToDec: NextPage = () => {
   const [result, setResult] = useState(0)
   const [min, setMin] = useState(1)
   const [max, setMax] = useState(20)
+
+  useEffect(() => {
+    handleGenerate()
+  }, [])
 
   const handleGenerate = () => {
     if(min > max){

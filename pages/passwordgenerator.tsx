@@ -23,7 +23,6 @@ const PasswordGenerator: NextPage = () => {
   useEffect(() => {
     handleGenerate()
   }, [])
-  
 
   const handleGenerate = () => {
     let pw: string = ''
