@@ -28,20 +28,20 @@ const PasswordGenerator: NextPage = () => {
   const handleGenerate = () => {
     let pw: string = ''
     let aux = length
-    for(let i = 1; i <= aux; i++){
-      if(i % 4 === 0 && uppercaseFlag){
+    for(let i = 0; i < aux; i++){
+      if((i%4+1) % 4 === 0 && uppercaseFlag){
         pw += characters.uppercase[Math.floor(Math.random()*characters.uppercase.length)]
-      }else if(i % 3 === 0 && lowercaseFlag){
+      }else if((i%4+1) % 3 === 0 && lowercaseFlag){
         pw += characters.lowercase[Math.floor(Math.random()*characters.lowercase.length)]
-      }else if(i % 2 === 0 && numbersFlag){
+      }else if((i%4+1) % 2 === 0 && numbersFlag){
         pw += characters.numbers[Math.floor(Math.random()*characters.numbers.length)]
-      }else if(symbolsFlag){
+      }else if((i%4+1) === 1 && symbolsFlag){
         pw += characters.symbols[Math.floor(Math.random()*characters.symbols.length)]
       }else{
         aux++
       }
     }
-    pw = [...pw].sort(() => 0.5 - Math.random()).join('')
+    //pw = [...pw].sort(() => 0.5 - Math.random()).join('')
     setPassword(pw)
   }
 
