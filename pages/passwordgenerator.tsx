@@ -18,6 +18,7 @@ const PasswordGenerator: NextPage = () => {
   const [lowercaseFlag, setLowercaseFlag] = useState(true)
   const [numbersFlag, setNumbersFlag] = useState(true)
   const [symbolsFlag, setSymbolsFlag] = useState(true)
+  const [spacesFlag, setSpacesFlag] = useState(false)
   const [length, setLength] = useState(20)
 
   useEffect(() => {
@@ -28,20 +29,29 @@ const PasswordGenerator: NextPage = () => {
     let pw: string = ''
     let aux = length
     for(let i = 0; i < aux; i++){
-      if(i%4 === 0 && uppercaseFlag){
+      if(i%5 === 0 && uppercaseFlag){
         pw += characters.uppercase[Math.floor(Math.random()*characters.uppercase.length)]
-      }else if(i%4 === 1 && lowercaseFlag){
+      }else if(i%5 === 1 && lowercaseFlag){
         pw += characters.lowercase[Math.floor(Math.random()*characters.lowercase.length)]
-      }else if(i%4 === 2 && numbersFlag){
+      }else if(i%5 === 2 && numbersFlag){
         pw += characters.numbers[Math.floor(Math.random()*characters.numbers.length)]
-      }else if(i%4 === 3 && symbolsFlag){
+      }else if(i%5 === 3 && symbolsFlag){
         pw += characters.symbols[Math.floor(Math.random()*characters.symbols.length)]
+      }else if(i%5 === 4 && spacesFlag){
+        pw += ' '
       }else{
         aux++
       }
     }
     pw = [...pw].sort(() => 0.5 - Math.random()).join('')
-    setPassword(pw)
+    console.log(pw)
+    console.log(pw.trim().length)
+    console.log(pw.length)
+    if(pw.trim().length < length || pw.includes('  ')){
+      handleGenerate()
+    }else{
+      setPassword(pw)
+    }
   }
 
   const copyToClipboard = () => {
@@ -112,6 +122,15 @@ const PasswordGenerator: NextPage = () => {
                 type="checkbox"
                 defaultChecked={true}
                 onClick={e => setSymbolsFlag((e.target as HTMLInputElement).checked)}
+              />
+            </div>
+            <div>
+              <label htmlFor="symbols">Spaces: </label>
+              <input
+                id="spaces"
+                type="checkbox"
+                defaultChecked={false}
+                onClick={e => setSpacesFlag((e.target as HTMLInputElement).checked)}
               />
             </div>
           </section>
