@@ -44,9 +44,6 @@ const PasswordGenerator: NextPage = () => {
       }
     }
     pw = [...pw].sort(() => 0.5 - Math.random()).join('')
-    console.log(pw)
-    console.log(pw.trim().length)
-    console.log(pw.length)
     if(pw.trim().length < length || pw.includes('  ')){
       handleGenerate()
     }else{
