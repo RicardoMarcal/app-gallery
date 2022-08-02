@@ -37,8 +37,8 @@ const Home: NextPage = () => {
           <Link href='/randomnumbergenerator'>
             <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Random Number Generator</p>
           </Link>
-          <Link href='/calculator'>
-            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Calculator</p>
+          <Link href='/slotmachine'>
+            <p className='p-2 rounded-md bg-blue-600 w-64 text-white cursor-pointer'>Slot Machine</p>
           </Link>
         </div>
 
