@@ -26,6 +26,7 @@ const PasswordGenerator: NextPage = () => {
   }, [])
 
   const handleGenerate = () => {
+    if (!(uppercaseFlag || lowercaseFlag || numbersFlag || symbolsFlag)) return
     let pw: string = ''
     let aux = length
     for(let i = 0; i < aux; i++){
@@ -122,7 +123,7 @@ const PasswordGenerator: NextPage = () => {
               />
             </div>
             <div>
-              <label htmlFor="symbols">Spaces: </label>
+              <label htmlFor="spaces">Spaces: </label>
               <input
                 id="spaces"
                 type="checkbox"
