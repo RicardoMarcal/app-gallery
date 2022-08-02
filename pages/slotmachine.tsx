@@ -6,14 +6,13 @@ import Header from '../components/Header'
 
 const symbols = ['🍒','🍋','🍌','💎','🎰','🔔','🍉','🍀','🍇']
 
-const winSound = new Audio('https://cdn.pixabay.com/download/audio/2022/01/18/audio_f981d1ac7d.mp3?filename=piglevelwin2mp3-14800.mp3')
-const playSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/10/audio_fa5b506645.mp3?filename=coins-falling-013-36967.mp3')
-
 const BinToDec: NextPage = () => {
   const [result, setResult] = useState(['🍒','🍀','💎'])
   const [wins, setWins] = useState(0)
   const [losses, setLosses] = useState(0)
 
+  const winSound = new Audio('https://cdn.pixabay.com/download/audio/2022/01/18/audio_f981d1ac7d.mp3?filename=piglevelwin2mp3-14800.mp3')
+  const playSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/10/audio_fa5b506645.mp3?filename=coins-falling-013-36967.mp3')
 
   const handleAnimate = (time: number, x: number) => {
     setTimeout(() => {
